@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram id="SwlB4TIlLRTN5ilvx-nV" name="Page-1">
-        <mxGraphModel dx="918" dy="824" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="491" dy="396" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="2" value="User" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="40" y="82" width="160" height="132" as="geometry">
+                    <mxGeometry x="40" y="82" width="160" height="106" as="geometry">
                         <mxRectangle x="40" y="80" width="60" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -17,9 +17,6 @@
                 </mxCell>
                 <mxCell id="5" value="password_digest: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
                     <mxGeometry y="80" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="6" value="is_admin: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
-                    <mxGeometry y="106" width="160" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="Sounds" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
                     <mxGeometry x="320" y="82" width="160" height="156" as="geometry"/>
@@ -52,7 +49,7 @@
                 <mxCell id="14" value="user - has_many :sounds" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
                     <mxGeometry x="40" y="260" width="150" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="sounds - belongs_to :user" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="15" value="sound - belongs_to :user" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
                     <mxGeometry x="310" y="265" width="170" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="Users that create a sound button for the sound board will have their user_id tied to said sound." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
@@ -60,9 +57,6 @@
                 </mxCell>
                 <mxCell id="17" value="This being said, any user should be able to see the whole sound board, search for specific sound buttons, and use them all." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
                     <mxGeometry x="90" y="410" width="360" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="18" value="Only users that is_admin == true can create, edit, or delete sounds." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="90" y="370" width="350" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
