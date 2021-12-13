@@ -18,9 +18,9 @@ export default function Login() {
                                     name="username"
                                     value={userNameFormData}
                                     onChange={e => setUserNameFormData(e.target.value)}
-                    />
+                    /> <br/>
                     Password: <input
-                                    type="text"
+                                    type="password"
                                     name="password"
                                     value={passwordFormData}
                                     onChange={e => setPasswordFormData(e.target.value)}
