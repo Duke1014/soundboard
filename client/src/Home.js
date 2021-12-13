@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import Signup from './Signup'
+import Login from './Login'
+
 export default function Home() {
 
-    const [signup, setSignup] = useState()
-    const [login, setLogin] = useState()
+    const [signup, setSignup] = useState(false)
+    const [login, setLogin] = useState(false)
 
     const showSignup = () => {
         setSignup(true)
+        setLogin(false)
     }
     const showLogin = () => {
         setLogin(true)
+        setSignup(false)
     }
 
     return (
@@ -23,6 +28,19 @@ export default function Home() {
             </div>
             <button onClick={showSignup}>Signup</button>
             <button onClick={showLogin}>Login</button>
+
+            {signup ? 
+            <>
+                <Signup />
+            </> : <>
+                
+            </>}
+            {login ? 
+            <>
+                <Login />
+            </> : <>
+                
+            </>}
         </div>
     )
 }

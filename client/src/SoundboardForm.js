@@ -27,13 +27,13 @@ export default function SoundboardForm() {
                     />
                     Sound Description: <input
                                     type="text"
-                                    name="name"
+                                    name="description"
                                     value={descriptionFormData}
                                     onChange={e => setDescriptionFormData(e.target.value)}
                     />
                     Sound URL: <input
                                     type="text"
-                                    name="name"
+                                    name="url"
                                     value={urlFormData}
                                     onChange={e => setUrlFormData(e.target.value)}
                     />
