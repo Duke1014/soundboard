@@ -8,6 +8,7 @@ export default function Home() {
 
     const [signup, setSignup] = useState(false)
     const [login, setLogin] = useState(false)
+    const [user, setUser] = useState(false)
 
     const showSignup = () => {
         setSignup(true)
@@ -18,6 +19,10 @@ export default function Home() {
         setSignup(false)
     }
 
+    const logout = () => {
+        setUser()
+    }
+
     return (
         <div>
             <h1>Duke's Soundboard</h1>
@@ -26,8 +31,14 @@ export default function Home() {
                 <h3><Link to="/soundboard-creation" className="soundboard-creation">Make A Sound</Link></h3>
                 <h3><Link to="/about" className="about">About</Link></h3>
             </div>
-            <button onClick={showSignup}>Signup</button>
-            <button onClick={showLogin}>Login</button>
+
+            {user ? 
+            <>
+                <button onClick={logout}>Log Out</button>
+            </> : <>
+                <button onClick={showSignup}>Signup</button>
+                <button onClick={showLogin}>Login</button>
+            </>}
 
             {signup ? 
             <>
