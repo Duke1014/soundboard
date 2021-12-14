@@ -12,6 +12,7 @@ export default function Signup() {
 
     return (
         <div>
+            <br/>
             <form onSubmit={handleSignup}>
                 <label>
                     Username: <input
@@ -32,6 +33,8 @@ export default function Signup() {
                                     value={passwordConfirmation}
                                     onChange={e => setPasswordConfirmation(e.target.value)}
                     />
+                    <br/>
+                    <input type="submit"></input>
                 </label>
             </form>
         </div>

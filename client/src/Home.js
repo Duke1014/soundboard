@@ -14,6 +14,7 @@ export default function Home() {
         setSignup(true)
         setLogin(false)
     }
+
     const showLogin = () => {
         setLogin(true)
         setSignup(false)
