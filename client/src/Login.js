@@ -1,12 +1,23 @@
 import React, { useState } from 'react'
 
-export default function Login() {
+export default function Login({ setUser }) {
     
-    const [userNameFormData, setUserNameFormData] = useState("")
-    const [passwordFormData, setPasswordFormData] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleLogin = (e) => {
         e.preventDefault()
+        fetch("/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        }).then((r) => {
+            console.log(r)
+            setUser(true)
+        })
     }
 
     return (
@@ -16,14 +27,14 @@ export default function Login() {
                     Username: <input
                                     type="text"
                                     name="username"
-                                    value={userNameFormData}
-                                    onChange={e => setUserNameFormData(e.target.value)}
+                                    value={username}
+                                    onChange={e => setUsername(e.target.value)}
                     /> <br/>
                     Password: <input
                                     type="password"
                                     name="password"
-                                    value={passwordFormData}
-                                    onChange={e => setPasswordFormData(e.target.value)}
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
                     />
                 </label>
             </form>

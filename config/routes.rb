@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :sounds
-  resources :users, only: [:show, :create]
+  resources :users
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

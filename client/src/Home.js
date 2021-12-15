@@ -43,13 +43,13 @@ export default function Home() {
 
             {signup ? 
             <>
-                <Signup />
+                <Signup setUser={setUser} />
             </> : <>
                 
             </>}
             {login ? 
             <>
-                <Login />
+                <Login setUser={setUser} />
             </> : <>
                 
             </>}

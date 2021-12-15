@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Signup() {
+export default function Signup({ setUser }) {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -18,6 +18,7 @@ export default function Signup() {
             })
         }).then((r) => {
             console.log(r)
+            setUser(true)
         })
     }
 
