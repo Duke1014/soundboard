@@ -2,12 +2,23 @@ import React, { useState } from 'react'
 
 export default function Signup() {
 
-    const [userNameFormData, setUserNameFormData] = useState("")
-    const [passwordFormData, setPasswordFormData] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
     const handleSignup = (e) => {
         e.preventDefault()
+        fetch("/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                username,
+                password,
+                password_confirmation: passwordConfirmation
+            })
+        }).then((r) => {
+            console.log(r)
+        })
     }
 
     return (
@@ -18,14 +29,14 @@ export default function Signup() {
                     Username: <input
                                     type="text"
                                     name="username"
-                                    value={userNameFormData}
-                                    onChange={e => setUserNameFormData(e.target.value)}
+                                    value={username}
+                                    onChange={e => setUsername(e.target.value)}
                     /> <br/>
                     Password: <input
                                     type="password"
                                     name="password"
-                                    value={passwordFormData}
-                                    onChange={e => setPasswordFormData(e.target.value)}
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
                     /> <br/>
                     Confirm Password: <input
                                     type="password"
