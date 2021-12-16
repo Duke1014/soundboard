@@ -9,12 +9,13 @@ export default function Home() {
 
     const [signup, setSignup] = useState(false)
     const [login, setLogin] = useState(false)
-    const [user, setUser] = useState()
+    const [user, setUser] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         fetch("/me").then((r) => {
           if (r.ok) {
-            r.json().then((user) => setUser(user));
+            r.json().then(setUser(true));
           }
         });
       }, []);
@@ -35,15 +36,14 @@ export default function Home() {
             <div>
                 <h3><Link to="/soundboard" className="soundboard" user={user}>Soundboard</Link></h3>
                 <h3><Link to="/soundboard-creation" className="soundboard-creation">Make A Sound</Link></h3>
-                <h3><Link to="/about" className="about">About</Link></h3>
+                <h3>{error}</h3>
             </div>
 
             {user ? 
             <>
                 <br/>
-                <h3>Welcome, {user.username}!</h3>
                 <br/>
-                <Logout setUser={setUser}/>
+                <Logout setUser={setUser} setError={setError}/>
             </> : <>
                 <button onClick={showSignup}>Signup</button>
                 <button onClick={showLogin}>Login</button>
@@ -51,13 +51,13 @@ export default function Home() {
 
             {signup ? 
             <>
-                <Signup setUser={setUser} />
+                <Signup setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin} />
             </> : <>
                 
             </>}
             {login ? 
             <>
-                <Login setUser={setUser} />
+                <Login setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin}/>
             </> : <>
                 
             </>}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Login({ setUser }) {
+export default function Login({ setUser, setError, setLogin, setSignup }) {
     
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -15,8 +15,15 @@ export default function Login({ setUser }) {
                 password
             })
         }).then((r) => {
-            console.log(r)
-            setUser(true)
+            if (r.ok) {
+                console.log(r)
+                setUser(true)
+                setError(`Welcome, ${username}!`)
+                setLogin(false)
+                setSignup(false)
+            } else {
+                setError("Error: Username or password invalid")
+            }
         })
     }
 

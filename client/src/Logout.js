@@ -1,13 +1,16 @@
 import React from 'react'
 
-export default function Logout({ setUser }) {
+export default function Logout({ setUser, setError }) {
 
     const logout = () => {
         fetch("/logout", {
             method: "DELETE"
         }).then((r) => {
             if (r.ok) {
-                setUser(null)
+                setUser(false)
+                setError("Logout successful")
+            } else {
+                setError("Error: User Not Found")
             }
         })
     }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Signup({ setUser }) {
+export default function Signup({ setUser, setError, setLogin, setSignup }) {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -16,9 +16,16 @@ export default function Signup({ setUser }) {
                 password,
                 password_confirmation: passwordConfirmation
             })
-        }).then((r) => {
-            console.log(r)
-            setUser(true)
+        }).then((r) => { 
+            if (r.ok) {
+                console.log(r)
+                setUser(true)
+                setLogin(false)
+                setSignup(false)
+            } else {
+                setError("Error: oh no")
+            }
+            
         })
     }
 
@@ -28,22 +35,22 @@ export default function Signup({ setUser }) {
             <form onSubmit={handleSignup}>
                 <label>
                     Username: <input
-                                    type="text"
-                                    name="username"
-                                    value={username}
-                                    onChange={e => setUsername(e.target.value)}
+                        type="text"
+                        name="username"
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
                     /> <br/>
                     Password: <input
-                                    type="password"
-                                    name="password"
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     /> <br/>
                     Confirm Password: <input
-                                    type="password"
-                                    name="password-confirmation"
-                                    value={passwordConfirmation}
-                                    onChange={e => setPasswordConfirmation(e.target.value)}
+                        type="password"
+                        name="password-confirmation"
+                        value={passwordConfirmation}
+                        onChange={e => setPasswordConfirmation(e.target.value)}
                     />
                     <br/>
                     <input type="submit"></input>
