@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import Signup from './Signup'
@@ -8,7 +8,16 @@ export default function Home() {
 
     const [signup, setSignup] = useState(false)
     const [login, setLogin] = useState(false)
-    const [user, setUser] = useState(false)
+    const [user, setUser] = useState()
+
+    useEffect(() => {
+        // auto-login
+        fetch("/me").then((r) => {
+          if (r.ok) {
+            r.json().then((user) => console.log(user));
+          }
+        }).then();
+      }, []);
 
     const showSignup = () => {
         setSignup(true)
@@ -21,14 +30,20 @@ export default function Home() {
     }
 
     const logout = () => {
-        setUser()
+        fetch("/logout", {
+            method: "DELETE"
+        }).then((r) => {
+            if (r.ok) {
+                setUser(null)
+            }
+        })
     }
 
     return (
         <div>
             <h1>Duke's Soundboard</h1>
             <div>
-                <h3><Link to="/soundboard" className="soundboard">Soundboard</Link></h3>
+                <h3><Link to="/soundboard" className="soundboard" user={user}>Soundboard</Link></h3>
                 <h3><Link to="/soundboard-creation" className="soundboard-creation">Make A Sound</Link></h3>
                 <h3><Link to="/about" className="about">About</Link></h3>
             </div>
