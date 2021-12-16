@@ -22,21 +22,24 @@ export default function Login({ setUser }) {
 
     return (
         <div>
+            <br/>
             <form onSubmit={handleLogin}>
                 <label>
                     Username: <input
-                                    type="text"
-                                    name="username"
-                                    value={username}
-                                    onChange={e => setUsername(e.target.value)}
+                        type="text"
+                        name="username"
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
                     /> <br/>
                     Password: <input
-                                    type="password"
-                                    name="password"
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     />
                 </label>
+                <br/>
+                <input type="submit"></input>
             </form>
         </div>
     )

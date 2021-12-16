@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import Signup from './Signup'
 import Login from './Login'
+import Logout from './Logout'
 
 export default function Home() {
 
@@ -11,12 +12,11 @@ export default function Home() {
     const [user, setUser] = useState()
 
     useEffect(() => {
-        // auto-login
         fetch("/me").then((r) => {
           if (r.ok) {
-            r.json().then((user) => console.log(user));
+            r.json().then((user) => setUser(user));
           }
-        }).then();
+        });
       }, []);
 
     const showSignup = () => {
@@ -27,16 +27,6 @@ export default function Home() {
     const showLogin = () => {
         setLogin(true)
         setSignup(false)
-    }
-
-    const logout = () => {
-        fetch("/logout", {
-            method: "DELETE"
-        }).then((r) => {
-            if (r.ok) {
-                setUser(null)
-            }
-        })
     }
 
     return (
@@ -50,7 +40,10 @@ export default function Home() {
 
             {user ? 
             <>
-                <button onClick={logout}>Log Out</button>
+                <br/>
+                <h3>Welcome, {user.username}!</h3>
+                <br/>
+                <Logout setUser={setUser}/>
             </> : <>
                 <button onClick={showSignup}>Signup</button>
                 <button onClick={showLogin}>Login</button>
