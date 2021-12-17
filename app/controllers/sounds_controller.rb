@@ -17,7 +17,7 @@ class SoundsController < ApplicationController
     def create
         user = User.find_by(id: session[:user_id])
         sound = user.sounds.create!(sound_params)
-        render json: recipe, status: :created
+        render json: sound, status: :created
     end
 
     # PATCH

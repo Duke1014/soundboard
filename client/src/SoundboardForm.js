@@ -10,6 +10,7 @@ export default function SoundboardForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setSoundError("")
         fetch("/sounds", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -19,6 +20,7 @@ export default function SoundboardForm() {
                 setSoundError("Sound successfully saved! Please go back to Soundboard to try it out.")
             } else {
                 setSoundError("Error: Invalid Prompt")
+                console.log(r)
             }
         })
     }
