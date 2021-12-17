@@ -1,44 +1,50 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function SoundboardForm() {
 
-    const [nameFormData, setNameFormData] = useState("")
-    const [descriptionFormData, setDescriptionFormData] = useState("")
-    const [urlFormData, setUrlFormData] = useState("")
+    const [nameForm, setNameForm] = useState("")
+    const [descriptionForm, setDescriptionForm] = useState("")
+    const [urlForm, setUrlForm] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
         // fetch("http://localhost:3000/sounds"), {
         //     method: "POST",
         //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify({name: nameFormData, description: descriptionFormData, sound_url: urlFormData})
+        //     body: JSON.stringify({name: nameForm, description: descriptionForm, sound_url: urlForm})
         // }
     }
 
     return (
         <div>
+            <div>Fill out this form to properly create a sound for the soundboard.</div>
+            <br/>
             <form onSubmit={handleSubmit}>
                 <label>
                     Sound Name: <input
-                                    type="text"
-                                    name="name"
-                                    value={nameFormData}
-                                    onChange={e => setNameFormData(e.target.value)}
-                    />
+                        type="text"
+                        name="name"
+                        value={nameForm}
+                        onChange={e => setNameForm(e.target.value)}
+                    /> <br/>
                     Sound Description: <input
-                                    type="text"
-                                    name="description"
-                                    value={descriptionFormData}
-                                    onChange={e => setDescriptionFormData(e.target.value)}
-                    />
+                        type="text"
+                        name="description"
+                        value={descriptionForm}
+                        onChange={e => setDescriptionForm(e.target.value)}
+                    /> <br/>
                     Sound URL: <input
-                                    type="text"
-                                    name="url"
-                                    value={urlFormData}
-                                    onChange={e => setUrlFormData(e.target.value)}
+                        type="text"
+                        name="url"
+                        value={urlForm}
+                        onChange={e => setUrlForm(e.target.value)}
                     />
                 </label>
             </form>
+            <div>(Developer's note: Do not worry about having the correct information, this can be edited later!)</div>
+            <br/>
+            <Link to="/" className="back-button">Back</Link>
         </div>
     )
 }

@@ -50,7 +50,7 @@ export default function Home() {
                 <Logout setUser={setUser} setError={setError}/>
             </> : <>
                 {login ? <>
-                    <h3>Log in here!</h3>
+                    <h3>Signed up already? Log in here!</h3>
                     <button onClick={showLogin}>Log In</button>
                 </> : <>
                     <h3>Sign up here!</h3>
