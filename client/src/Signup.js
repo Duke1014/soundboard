@@ -22,6 +22,7 @@ export default function Signup({ setUser, setError, setLogin, setSignup }) {
                 setUser(true)
                 setLogin(false)
                 setSignup(false)
+                setError(`Signup successful!`)
             } else {
                 setError("Error: oh no")
             }

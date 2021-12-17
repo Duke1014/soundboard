@@ -22,45 +22,43 @@ export default function Home() {
 
     const showSignup = () => {
         setSignup(true)
-        setLogin(false)
-    }
-
-    const showLogin = () => {
         setLogin(true)
+    }
+    const showLogin = () => {
         setSignup(false)
+        setLogin(false)
     }
 
     return (
         <div>
             <h1>Duke's Soundboard</h1>
-            <div>
-                <h3><Link to="/soundboard" className="soundboard" user={user}>Soundboard</Link></h3>
-                <h3><Link to="/soundboard-creation" className="soundboard-creation">Make A Sound</Link></h3>
-                <h3>{error}</h3>
-            </div>
 
-            {user ? 
-            <>
-                <br/>
+            <h3>{error}</h3>
+
+            {signup ? <>
+                <Signup setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin} />
+            </> : <> 
+                <Login setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin}/>
+            </>}
+
+            {user ? <>
+                <div>
+                    <h3><Link to="/soundboard" className="soundboard" user={user}>Soundboard</Link></h3>
+                    <h3><Link to="/soundboard-creation" className="soundboard-creation">Make A Sound</Link></h3>
+                </div>
                 <br/>
                 <Logout setUser={setUser} setError={setError}/>
             </> : <>
-                <button onClick={showSignup}>Signup</button>
-                <button onClick={showLogin}>Login</button>
+                {login ? <>
+                    <h3>Log in here!</h3>
+                    <button onClick={showLogin}>Log In</button>
+                </> : <>
+                    <h3>Sign up here!</h3>
+                    <button onClick={showSignup}>Signup</button>
+                </>}
+
             </>}
 
-            {signup ? 
-            <>
-                <Signup setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin} />
-            </> : <>
-                
-            </>}
-            {login ? 
-            <>
-                <Login setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin}/>
-            </> : <>
-                
-            </>}
         </div>
     )
 }

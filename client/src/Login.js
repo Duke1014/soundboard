@@ -46,7 +46,7 @@ export default function Login({ setUser, setError, setLogin, setSignup }) {
                     />
                 </label>
                 <br/>
-                <input type="submit"></input>
+                <button type="submit">Log In</button>
             </form>
         </div>
     )
