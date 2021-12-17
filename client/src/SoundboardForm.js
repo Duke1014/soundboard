@@ -6,14 +6,21 @@ export default function SoundboardForm() {
     const [nameForm, setNameForm] = useState("")
     const [descriptionForm, setDescriptionForm] = useState("")
     const [urlForm, setUrlForm] = useState("")
+    const [soundError, setSoundError] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // fetch("http://localhost:3000/sounds"), {
-        //     method: "POST",
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify({name: nameForm, description: descriptionForm, sound_url: urlForm})
-        // }
+        fetch("/sounds", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({name: nameForm, description: descriptionForm, sound_url: urlForm})
+        }).then((r) => {
+            if (r.ok) {
+                setSoundError("Sound successfully saved! Please go back to Soundboard to try it out.")
+            } else {
+                setSoundError("Error: Invalid Prompt")
+            }
+        })
     }
 
     return (
@@ -41,7 +48,11 @@ export default function SoundboardForm() {
                         onChange={e => setUrlForm(e.target.value)}
                     />
                 </label>
+                <br/>    
+                <button type="submit">Create Sound</button>
             </form>
+            <div>{soundError}</div>
+            <br/>
             <div>(Developer's note: Do not worry about having the correct information, this can be edited later!)</div>
             <br/>
             <Link to="/" className="back-button">Back</Link>

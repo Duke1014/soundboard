@@ -35,11 +35,7 @@ export default function Home() {
 
             <h3>{error}</h3>
 
-            {signup ? <>
-                <Signup setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin} />
-            </> : <> 
-                <Login setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin}/>
-            </>}
+            
 
             {user ? <>
                 <div>
@@ -49,6 +45,11 @@ export default function Home() {
                 <br/>
                 <Logout setUser={setUser} setError={setError}/>
             </> : <>
+                {signup ? <>
+                    <Signup setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin} />
+                </> : <> 
+                    <Login setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin}/>
+                </>}
                 {login ? <>
                     <h3>Signed up already? Log in here!</h3>
                     <button onClick={showLogin}>Log In</button>
