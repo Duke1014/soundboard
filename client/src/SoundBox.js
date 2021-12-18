@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {  } from 'react'
 
-export default function SoundBox({ id, name, description, sound_url }) {
+export default function SoundBox({ id, name, description, sound_url, setEdit }) {
 
-    const handlePlay = () => {
-        console.log("MOO")
+    const handlePlay = (e) => {
+        e.preventDefault()
+        setEdit(false)
     }
 
     return (
@@ -12,14 +12,7 @@ export default function SoundBox({ id, name, description, sound_url }) {
             <h3>{name}</h3>
             <h4>{description}</h4>
             <button onClick={handlePlay}>►</button>
-            <Link to={`/soundboard-edit/${id}`} 
-                className='edit-button' 
-                id={id} 
-                name={name} 
-                description={description} 
-                sound_url={sound_url}>
-                <button onClick={handlePlay}>✎</button>
-            </Link>
+            <button className='edit-button' onClick={setEdit(true)}>✎</button>
         </div>
     )
 }

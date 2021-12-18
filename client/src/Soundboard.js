@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import SoundBox from './SoundBox'
+import SoundEdit from './SoundEdit'
 
-export default function Soundboard({  }) {
+export default function Soundboard() {
 
     const [sounds, setSounds] = useState([])
+    const [edit, setEdit] = useState(false)
 
     useEffect(() => {
         fetch("/sounds")
@@ -24,6 +26,7 @@ export default function Soundboard({  }) {
                         name={sound.name} 
                         description={sound.description} 
                         sound_url={sound.sound_url} 
+                        setEdit={setEdit}
                         className='sound-box'
                     /> </div>
                 )) }</div>
@@ -32,6 +35,17 @@ export default function Soundboard({  }) {
             </>}
             <br/>
             <Link to="/" className="back-button">Back</Link>
+            <br/> <br/>
+            {/* {edit ? <>
+                <SoundEdit 
+                // id={id} 
+                // name={name} 
+                // description={description} 
+                // sound_url={sound_url} 
+                />
+            </> : <>
+                <div>Edit mode off</div>
+            </>} */}
         </div>
     )
 }
