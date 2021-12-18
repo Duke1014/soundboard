@@ -16,9 +16,17 @@ export default function Soundboard({  }) {
     return (
         <div>
             {sounds.length > 0 ? (
-                sounds.map((sound) => (
-                    <SoundBox key={sound.id} name={sound.name} description={sound.description} sound_url={sound.sound_url} />
-                ))
+                <div className='sound-grid'>
+                {sounds.map((sound) => (
+                    <div key={sound.id}>
+                    <SoundBox 
+                        id={sound.id}
+                        name={sound.name} 
+                        description={sound.description} 
+                        sound_url={sound.sound_url} 
+                        className='sound-box'
+                    /> </div>
+                )) }</div>
             ) : <>
                 <div>No Sounds Found :(</div>
             </>}
