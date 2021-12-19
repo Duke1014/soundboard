@@ -22,7 +22,13 @@ class SoundsController < ApplicationController
 
     # PATCH
     def update
-
+        sound = Sound.find_by(id: params[:id])
+        if sound
+            sound.update(sound_params)
+            render json: sound
+        else
+            render json: { error: "Sound not found" }, status: :not_found
+        end
     end
 
     # DELETE

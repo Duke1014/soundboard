@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get "/sounds", to: "sounds#index"
   get "/sounds/:id", to: "sounds#show"
   post "/sounds", to: "sounds#create"
-  delete "/sounds", to: "sounds#destroy"
+  patch "/sounds/:id", to: "sounds#update"
+  delete "/sounds/:id", to: "sounds#destroy"
 
   # SESSIONS
   post '/login', to: 'sessions#create'
