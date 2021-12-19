@@ -11,8 +11,6 @@ export default function SoundBox({ id, name, description, sound_url }) {
     const handlePlay = (e) => {
         e.preventDefault()
         console.log(`${id}, ${name}, ${description}, ${sound_url}`)
-        // console.log("-")
-        // console.log(`${e.target.id}`)
     }
 
     const handleEditButton = () => {
@@ -32,13 +30,19 @@ export default function SoundBox({ id, name, description, sound_url }) {
         }).then((r) => r.json().then((data) => console.log(data)))
     }
 
+    const handleDelete = (e) => {
+        e.preventDefault()
+        fetch(`/sounds/${id}`, {
+            method: "DELETE",
+            headers: {'Content-Type': 'application/json'},
+            body: null
+        })
+    }
+
     return (
         <div>
             {edit ? <>
-                <h3>{name}</h3>
-                <h4>{description}</h4>
-            </> : <>
-            <form onSubmit={handleSubmit} id={id}>
+                <form onSubmit={handleSubmit} id={id}>
                 <label>
                     {name}
                     <br/>
@@ -61,13 +65,16 @@ export default function SoundBox({ id, name, description, sound_url }) {
                         onChange={e => setUrlForm(e.target.value)}
                     />
                 </label>
-            <br/>    
-            <button type="submit">Edit Sound</button>
+                <br/>    
+                <button type="submit">Edit Sound</button>
             </form>
+            </> : <>
+                <h3>{name}</h3>
+                <h4>{description}</h4>
             </>}
             <button onClick={handlePlay}>►</button>
             <button className='edit-button' id={id} onClick={handleEditButton}>✎</button>
-            <button className="delete-button" id={id}>🗑</button>
+            <button className="delete-button" id={id} onClick={handleDelete}>🗑</button>
         </div>
     )
 }

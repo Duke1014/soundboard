@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # SOUNDS
   get "/sounds", to: "sounds#index"
-  get "/sounds/:id", to: "sounds#show"
+  # get "/sounds/:id", to: "sounds#show"
   post "/sounds", to: "sounds#create"
   patch "/sounds/:id", to: "sounds#update"
   delete "/sounds/:id", to: "sounds#destroy"

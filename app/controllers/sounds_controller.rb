@@ -9,9 +9,9 @@ class SoundsController < ApplicationController
     end
 
     # GET :id
-    def show
+    # def show
 
-    end
+    # end
 
     # POST
     def create
@@ -33,7 +33,9 @@ class SoundsController < ApplicationController
 
     # DELETE
     def destroy
-
+        sound = Sound.find_by(id: params[:id])
+        sound.destroy
+        head :no_content
     end
 
     private
