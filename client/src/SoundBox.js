@@ -18,6 +18,7 @@ export default function SoundBox({ id, name, description, sound_url, setError })
     }
 
     const handleSubmit = (e) => {
+        setError("")
         e.preventDefault()
         fetch(`/sounds/${id}`, {
             method: "PATCH",
@@ -32,12 +33,14 @@ export default function SoundBox({ id, name, description, sound_url, setError })
     }
 
     const handleDelete = (e) => {
+        setError("")
         e.preventDefault()
         fetch(`/sounds/${id}`, {
             method: "DELETE",
             headers: {'Content-Type': 'application/json'},
             body: null
-        }).then(setError("Sound edited successfully!"))
+        }).then(setError("Sound deleted successfully!"))
+        .then(setEdit(false))
     }
 
     return (

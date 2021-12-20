@@ -13,7 +13,6 @@ export default function Soundboard() {
         fetch("/sounds")
         .then((r) => r.json())
         .then(setSounds)
-
     }, [error])
 
     return (
