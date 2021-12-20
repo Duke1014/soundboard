@@ -6,6 +6,7 @@ import SoundBox from './SoundBox'
 export default function Soundboard() {
 
     const [sounds, setSounds] = useState([])
+    const [error, setError] = useState("")
     
 
     useEffect(() => {
@@ -13,7 +14,7 @@ export default function Soundboard() {
         .then((r) => r.json())
         .then(setSounds)
 
-    }, [])
+    }, [error])
 
     return (
         <div>
@@ -27,6 +28,7 @@ export default function Soundboard() {
                         description={sound.description} 
                         sound_url={sound.sound_url} 
                         className='sound-box'
+                        setError={setError}
                     /> </div>
                 )) }</div>
             ) : <>
@@ -35,6 +37,7 @@ export default function Soundboard() {
             <br/>
             <Link to="/" className="back-button">Back</Link>
             <br/> <br/>
+            {error}
         </div>
     )
 }

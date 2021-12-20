@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 
 
-export default function SoundBox({ id, name, description, sound_url }) {
+export default function SoundBox({ id, name, description, sound_url, setError }) {
 
     const [edit, setEdit] = useState(false)
     const [nameForm, setNameForm] = useState("")
     const [descriptionForm, setDescriptionForm] = useState("")
     const [urlForm, setUrlForm] = useState("")
     
-    const handlePlay = (e) => {
-        e.preventDefault()
-        console.log(`${id}, ${name}, ${description}, ${sound_url}`)
-    }
+    // const handlePlay = (e) => {
+    //     e.preventDefault()
+    //     console.log(`${id}, ${name}, ${description}, ${sound_url}`)
+    // }
 
     const handleEditButton = () => {
         setEdit(true)
@@ -27,7 +27,8 @@ export default function SoundBox({ id, name, description, sound_url }) {
                 description: descriptionForm,
                 sound_url: urlForm
              })
-        }).then((r) => r.json().then((data) => console.log(data)))
+        }).then(setError("Sound edited successfully!"))
+        .then(setEdit(false))
     }
 
     const handleDelete = (e) => {
@@ -36,7 +37,7 @@ export default function SoundBox({ id, name, description, sound_url }) {
             method: "DELETE",
             headers: {'Content-Type': 'application/json'},
             body: null
-        })
+        }).then(setError("Sound edited successfully!"))
     }
 
     return (
@@ -72,7 +73,7 @@ export default function SoundBox({ id, name, description, sound_url }) {
                 <h3>{name}</h3>
                 <h4>{description}</h4>
             </>}
-            <button onClick={handlePlay}>►</button>
+            {/* <button onClick={handlePlay}>►</button> */}
             <button className='edit-button' id={id} onClick={handleEditButton}>✎</button>
             <button className="delete-button" id={id} onClick={handleDelete}>🗑</button>
         </div>
