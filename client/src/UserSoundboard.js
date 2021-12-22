@@ -5,13 +5,13 @@ import SoundBox from './SoundBox'
 
 export default function Soundboard() {
 
-    const [sounds, setSounds] = useState([])
+    const [userSounds, setUserSounds] = useState([])
     const [error, setError] = useState("")
     
     useEffect(() => {
-        fetch("/sounds")
+        fetch("/me/sounds")
         .then((r) => r.json())
-        .then(setSounds)
+        .then(setUserSounds)
     }, [error])
 
     const handlePing = () => {
@@ -22,9 +22,9 @@ export default function Soundboard() {
 
     return (
         <div>
-            {sounds.length > 0 ? (
+            {userSounds.length > 0 ? (
                 <div className='sound-grid'>
-                {sounds.map((sound) => (
+                {userSounds.map((sound) => (
                     <div key={sound.id}>
                     <SoundBox 
                         id={sound.id}

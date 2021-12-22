@@ -17,7 +17,7 @@ export default function Home() {
           if (r.ok) {
             r.json().then(setUser(true));
           }
-        });
+        })
       }, []);
 
     const showSignup = () => {
@@ -41,6 +41,7 @@ export default function Home() {
                 <div>
                     <h3><Link to="/soundboard" className="soundboard" user={user}>Soundboard</Link></h3>
                     <h3><Link to="/soundboard-creation" className="soundboard-creation">Make A Sound</Link></h3>
+                    <h3><Link to="/user-soundboard" className="user-soundboard">User Soundboard</Link></h3>
                 </div>
                 <br/>
                 <Logout setUser={setUser} setError={setError}/>
