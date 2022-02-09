@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import Signup from './Signup'
 import Login from './Login'
 import Logout from './Logout'
+import { UserContext } from './context/user'
 
 export default function Home() {
 
+    const { user, loggedIn } = useContext(UserContext)
     const [signup, setSignup] = useState(false)
     const [login, setLogin] = useState(false)
-    const [user, setUser] = useState(false)
     const [error, setError] = useState("")
-
-    useEffect(() => {
-        fetch("/me").then((r) => {
-          if (r.ok) {
-            r.json().then(setUser(true));
-          }
-        })
-      }, []);
 
     const showSignup = () => {
         setSignup(true)
@@ -32,24 +25,20 @@ export default function Home() {
     return (
         <div>
             <h1>Duke's Soundboard</h1>
-
             <h3>{error}</h3>
-
-            
-
-            {user ? <>
+            {loggedIn ? <>
                 <div>
                     <h3><Link to="/soundboard" className="soundboard" user={user}>Soundboard</Link></h3>
                     <h3><Link to="/soundboard-creation" className="soundboard-creation">Make A Sound</Link></h3>
                     <h3><Link to="/user-soundboard" className="user-soundboard">User Soundboard</Link></h3>
                 </div>
                 <br/>
-                <Logout setUser={setUser} setError={setError}/>
+                <Logout setError={setError}/>
             </> : <>
                 {signup ? <>
-                    <Signup setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin} />
+                    <Signup setError={setError} setSignup={setSignup} setLogin={setLogin} />
                 </> : <> 
-                    <Login setUser={setUser} setError={setError} setSignup={setSignup} setLogin={setLogin}/>
+                    <Login setError={setError} setSignup={setSignup} setLogin={setLogin}/>
                 </>}
                 {login ? <>
                     <h3>Signed up already? Log in here!</h3>
@@ -58,9 +47,7 @@ export default function Home() {
                     <h3>Sign up here!</h3>
                     <button onClick={showSignup}>Signup</button>
                 </>}
-
             </>}
-
         </div>
     )
 }

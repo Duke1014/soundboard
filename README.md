@@ -38,9 +38,5 @@ npm start --prefix client
 rails s
 ```
 
-## Contributing
-
-As of 12/19/2021, contributions are not accepted at this time.
-
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
