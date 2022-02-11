@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import SoundBox from './SoundBox'
+import { UserContext } from './context/user'
 
 export default function Soundboard() {
 
     const [sounds, setSounds] = useState([])
     const [error, setError] = useState("")
-    
+    const { loggedIn } = useContext(UserContext)
+
     useEffect(() => {
         fetch("/sounds")
         .then((r) => r.json())
@@ -22,7 +24,8 @@ export default function Soundboard() {
 
     return (
         <div>
-            {sounds.length > 0 ? (
+            {loggedIn ? <>
+                {sounds.length > 0 ? (
                 <div className='sound-grid'>
                 {sounds.map((sound) => (
                     <div key={sound.id}>
@@ -35,14 +38,17 @@ export default function Soundboard() {
                         setError={setError}
                     /> </div>
                 )) }</div>
-            ) : <>
-                <div>No Sounds Found :(</div>
+                ) : <>
+                    <div>No Sounds Found :(</div>
+                </>}
+                <br/>
+                <Link to="/" className="back-button">Back</Link>
+                <br/> <br/>
+                <button onClick={handlePing}>PING</button>
+                {error}
+            </> : <>
+                <h2>Unauthorized access. Please log in to continue.</h2>  
             </>}
-            <br/>
-            <Link to="/" className="back-button">Back</Link>
-            <br/> <br/>
-            <button onClick={handlePing}>PING</button>
-            {error}
         </div>
     )
 }

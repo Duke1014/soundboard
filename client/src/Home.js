@@ -10,16 +10,13 @@ export default function Home() {
 
     const { user, loggedIn } = useContext(UserContext)
     const [signup, setSignup] = useState(false)
-    const [login, setLogin] = useState(false)
     const [error, setError] = useState("")
 
     const showSignup = () => {
         setSignup(true)
-        setLogin(true)
     }
     const showLogin = () => {
         setSignup(false)
-        setLogin(false)
     }
 
     return (
@@ -36,14 +33,13 @@ export default function Home() {
                 <Logout setError={setError}/>
             </> : <>
                 {signup ? <>
+                    <h3>Sign up here!</h3>
                     <Signup setError={setError} setSignup={setSignup} setLogin={setLogin} />
-                </> : <> 
-                    <Login setError={setError} setSignup={setSignup} setLogin={setLogin}/>
-                </>}
-                {login ? <>
                     <h3>Signed up already? Log in here!</h3>
                     <button onClick={showLogin}>Log In</button>
-                </> : <>
+                </> : <> 
+                    <h3>Welcome! Log in here:</h3>
+                    <Login setError={setError} setSignup={setSignup} setLogin={setLogin}/>
                     <h3>Sign up here!</h3>
                     <button onClick={showSignup}>Signup</button>
                 </>}

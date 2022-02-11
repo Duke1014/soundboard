@@ -39,4 +39,5 @@ function UserProvider({ children }) {
         </UserContext.Provider>
     )
 }
+
 export { UserContext, UserProvider }
