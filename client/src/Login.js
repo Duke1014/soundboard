@@ -16,7 +16,6 @@ export default function Login({ setUser, setError, setLogin, setSignup }) {
             })
         }).then((r) => {
             if (r.ok) {
-                console.log(r)
                 setUser(true)
                 setError(`Welcome, ${username}!`)
                 setLogin(false)
