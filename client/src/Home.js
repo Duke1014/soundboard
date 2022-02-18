@@ -21,7 +21,7 @@ export default function Home() {
 
     return (
         <div>
-            <h1>Duke's Soundboard</h1>
+            <h1 className='title'>Duke's Soundboard</h1>
             <h3>{error}</h3>
             {loggedIn ? <>
                 <div>
@@ -33,15 +33,19 @@ export default function Home() {
                 <Logout setError={setError}/>
             </> : <>
                 {signup ? <>
-                    <h3>Sign up here!</h3>
-                    <Signup setError={setError} setSignup={setSignup} />
-                    <h3>Signed up already? Log in here!</h3>
-                    <button onClick={showLogin}>Log In</button>
+                    <div className='sign-up'>
+                        <h3>Sign up here!</h3>
+                        <Signup setError={setError} setSignup={setSignup} />
+                        <h3>Signed up already? Log in here!</h3>
+                        <button onClick={showLogin}>Log In</button>
+                    </div>
                 </> : <> 
-                    <h3>Welcome! Log in here:</h3>
-                    <Login setError={setError} setSignup={setSignup} />
-                    <h3>Sign up here!</h3>
-                    <button onClick={showSignup}>Signup</button>
+                    <div className='log-in'>
+                        <h3>Welcome! Log in here:</h3>
+                        <Login setError={setError} setSignup={setSignup} />
+                        <h3>Sign up here!</h3>
+                        <button onClick={showSignup}>Signup</button>
+                    </div>
                 </>}
             </>}
         </div>

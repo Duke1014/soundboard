@@ -22,3 +22,7 @@ code {
    background-color: #2195f34b;
    padding: 10px;
 }
+
+.title, .sign-up, .log-in {
+  text-align: center;
+}
