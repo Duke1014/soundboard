@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export default function SoundBox({ id, name, description, sound_url, setError }) {
+export default function SoundBox({ id, name, description, setError }) {
 
     const [edit, setEdit] = useState(false)
     const [nameForm, setNameForm] = useState("")

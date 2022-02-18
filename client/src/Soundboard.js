@@ -7,7 +7,6 @@ export default function Soundboard() {
 
     const [sounds, setSounds] = useState([])
     const [error, setError] = useState("")
-    
 
     useEffect(() => {
         fetch("/sounds")
