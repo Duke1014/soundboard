@@ -34,12 +34,12 @@ export default function Home() {
             </> : <>
                 {signup ? <>
                     <h3>Sign up here!</h3>
-                    <Signup setError={setError} setSignup={setSignup} setLogin={setLogin} />
+                    <Signup setError={setError} setSignup={setSignup} />
                     <h3>Signed up already? Log in here!</h3>
                     <button onClick={showLogin}>Log In</button>
                 </> : <> 
                     <h3>Welcome! Log in here:</h3>
-                    <Login setError={setError} setSignup={setSignup} setLogin={setLogin}/>
+                    <Login setError={setError} setSignup={setSignup} />
                     <h3>Sign up here!</h3>
                     <button onClick={showSignup}>Signup</button>
                 </>}
