@@ -26,3 +26,12 @@ code {
 .title, .sign-up, .log-in {
   text-align: center;
 }
+
+.error-home {
+  color: red;
+  text-align: center;
+}
+
+.sign-up-info {
+  font-size: 14px;
+}
