@@ -8,16 +8,11 @@ import { UserContext } from './context/user'
 export default function Home() {
 
     const { user, loggedIn } = useContext(UserContext)
-    const [signup, setSignup] = useState(false)
     const [error, setError] = useState("")
-
-    const showLogin = () => {
-        setSignup(false)
-    }
 
     return (
         <div>
-            <h1 className='title'>Duke's Soundboard</h1>
+            <header className='title'>Duke's Soundboard</header>
             <div className='error-home'>{error}</div>
             {loggedIn ? <>
                 <div>
@@ -28,21 +23,13 @@ export default function Home() {
                 <br/>
                 <Logout setError={setError}/>
             </> : <>
-                {signup ? <>
-                    <div className='sign-up'>
-                        <h3>Sign up here!</h3>
-                        <h3>Signed up already? Log in here!</h3>
-                        <button onClick={showLogin}>Log In</button>
+                <div className='log-in'>
+                    <h3>Welcome! Log in here:</h3>
+                    <Login setError={setError} />
+                    <div className='sign-up-info'>
+                        <span>Don't have an account? <Link to="/sign-up" className="sign-up-page">Sign up here!</Link></span>
                     </div>
-                </> : <> 
-                    <div className='log-in'>
-                        <h3>Welcome! Log in here:</h3>
-                        <Login setError={setError} setSignup={setSignup} />
-                        <div className='sign-up-info'>
-                            <span>Don't have an account? <Link to="/signup" className="sign-up-page">Sign up here!</Link></span>
-                        </div>
-                    </div>
-                </>}
+                </div>
             </>}
         </div>
     )

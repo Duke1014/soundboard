@@ -13,17 +13,13 @@ code {
 }
 
 .sound-grid {
-  /* display: grid;
-  grid-template-columns: auto auto auto;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-   */
    display: grid;
    grid-template-columns: auto auto auto;
    background-color: #2195f34b;
    padding: 10px;
 }
 
-.title, .sign-up, .log-in {
+.title, .sign-up, .log-in, .sign-up-form {
   text-align: center;
 }
 
@@ -34,4 +30,12 @@ code {
 
 .sign-up-info {
   font-size: 14px;
+}
+
+.title {
+  font-size: xx-large;
+}
+
+.sign-up-form {
+  padding: 10px;
 }

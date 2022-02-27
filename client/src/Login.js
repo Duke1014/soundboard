@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from './context/user'
 
-export default function Login({ setUser, setError, setSignup }) {
+export default function Login({ setUser, setError }) {
     
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -18,25 +18,25 @@ export default function Login({ setUser, setError, setSignup }) {
                 setUser(true)
                 setError(`Welcome, ${username}!`)
                 login(r)
-                setSignup(false)
             } else {
-                setError("Error: Username or password invalid")
+                setError("Error: Username or password invalid.")
             }
         })
     }
 
     return (
         <div>
-            <br/>
             <form onSubmit={handleLogin}>
                 <label>
                     Username: <input
+                        className='log-in-username-form'
                         type="text"
                         name="username"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
                     /> <br/>
                     Password: <input
+                        className='log-in-password-form'
                         type="password"
                         name="password"
                         value={password}
