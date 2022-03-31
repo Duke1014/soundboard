@@ -18,7 +18,6 @@ export default function Signup({ setUser, setError, setLogin, setSignup }) {
             })
         }).then((r) => { 
             if (r.ok) {
-                console.log(r)
                 setUser(true)
                 setLogin(false)
                 setSignup(false)

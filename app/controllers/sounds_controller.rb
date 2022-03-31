@@ -8,6 +8,18 @@ class SoundsController < ApplicationController
         render json: sounds, include: :user
     end
 
+    def ping
+        user = User.find_by(id: session[:user_id])
+        ping = user.sounds.create(name: "pong", sound_url: "pong", description: "pong")
+        render json: ping, status: :created
+    end
+
+    def user_sounds
+        user = User.find_by(id: session[:user_id])
+        sounds = user.sounds
+        render json: sounds
+    end
+
     # GET :id
     # def show
 

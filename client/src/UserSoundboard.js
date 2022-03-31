@@ -6,14 +6,14 @@ import { UserContext } from './context/user'
 
 export default function Soundboard() {
 
-    const [sounds, setSounds] = useState([])
+    const [userSounds, setUserSounds] = useState([])
     const [error, setError] = useState("")
     const { loggedIn } = useContext(UserContext)
-
+    
     useEffect(() => {
-        fetch("/sounds")
+        fetch("/me/sounds")
         .then((r) => r.json())
-        .then(setSounds)
+        .then(setUserSounds)
     }, [error])
 
     const handlePing = () => {
@@ -25,19 +25,19 @@ export default function Soundboard() {
     return (
         <div>
             {loggedIn ? <>
-                {sounds.length > 0 ? (
-                <div className='sound-grid'>
-                {sounds.map((sound) => (
-                    <div key={sound.id}>
-                    <SoundBox 
-                        id={sound.id}
-                        name={sound.name} 
-                        description={sound.description} 
-                        sound_url={sound.sound_url} 
-                        className='sound-box'
-                        setError={setError}
-                    /> </div>
-                )) }</div>
+                {userSounds.length > 0 ? (
+                    <div className='sound-grid'>
+                    {userSounds.map((sound) => (
+                        <div key={sound.id}>
+                        <SoundBox 
+                            id={sound.id}
+                            name={sound.name} 
+                            description={sound.description} 
+                            sound_url={sound.sound_url} 
+                            className='sound-box'
+                            setError={setError}
+                        /> </div>
+                    )) }</div>
                 ) : <>
                     <div>No Sounds Found :(</div>
                 </>}

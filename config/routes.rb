@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
   # My stuff here:
   # USERS
@@ -21,4 +21,10 @@ Rails.application.routes.draw do
   # SESSIONS
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  # ping 
+  get '/ping', to: "sounds#ping"
+
+  # USER SOUNDS
+  get "/me/sounds", to: "sounds#user_sounds"
 end

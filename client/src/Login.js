@@ -1,25 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from './context/user'
 
-export default function Login({ setUser, setError, setLogin, setSignup }) {
+export default function Login({ setUser, setError, setSignup }) {
     
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const { login } = useContext(UserContext)
 
     const handleLogin = (e) => {
         e.preventDefault()
         fetch("/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                username,
-                password
-            })
+            body: JSON.stringify({ username, password })
         }).then((r) => {
             if (r.ok) {
-                console.log(r)
                 setUser(true)
                 setError(`Welcome, ${username}!`)
-                setLogin(false)
+                login(r)
                 setSignup(false)
             } else {
                 setError("Error: Username or password invalid")
